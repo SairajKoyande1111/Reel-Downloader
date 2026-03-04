@@ -9,7 +9,7 @@
     "start": "NODE_ENV=production node server/index.js",
     "check": "tsc",
     "db:push": "drizzle-kit push",
-    "vercel-build": "npm run build && cp dist/index.cjs server/index.js"
+    "vercel-build": "npm run build && cp dist/index.cjs server/index.js && cp -r dist/public/* public/"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

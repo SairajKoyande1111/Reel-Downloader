@@ -79,8 +79,13 @@ app.use((req, res, next) => {
   // setting up all the other routes so the catch-all route
   // doesn't interfere with the other routes
   if (process.env.NODE_ENV === "production" || process.env.VERCEL === "1") {
-    const { serveStatic } = await import("./static.js");
-    serveStatic(app);
+    // In Vercel, we don't need to serve static files from Express
+    // because Vercel handles it via the "public" directory and rewrites.
+    // But we still need to register routes.
+    if (process.env.VERCEL !== "1") {
+      const { serveStatic } = await import("./static.js");
+      serveStatic(app);
+    }
   } else {
     const { setupVite } = await import("./vite");
     await setupVite(httpServer, app);
