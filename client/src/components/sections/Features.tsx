@@ -44,17 +44,24 @@ export function Features() {
               We've built the most reliable tool to save content from Instagram directly to your device. Here's what makes us different.
             </p>
 
-            <div className="space-y-8">
+            <div className="space-y-6">
               {features.map((feature, idx) => (
-                <div key={idx} className="flex gap-5">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white shadow-sm border border-border flex items-center justify-center">
+                <motion.div 
+                  key={idx} 
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="glass-card p-5 rounded-2xl flex gap-6"
+                >
+                  <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-white shadow-sm border border-white/50 flex items-center justify-center">
                     {feature.icon}
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-foreground mb-2">{feature.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                    <h3 className="text-xl font-bold text-foreground mb-2">{feature.title}</h3>
+                    <p className="text-muted-foreground/80 leading-relaxed font-light">{feature.description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>

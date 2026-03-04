@@ -31,30 +31,30 @@ export function Hero() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto space-y-8"
         >
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-tight">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight">
             Download Instagram Reels <br />
             <span className="text-gradient">Instantly.</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground/80 max-w-2xl mx-auto leading-relaxed font-light">
             Paste any public Instagram Reel or Video URL below to download it in high quality format. Free, fast, and no registration required.
           </p>
 
           <div className="mt-12 max-w-2xl mx-auto relative">
-            <div className="glass-panel rounded-3xl p-2 md:p-3 relative z-10 transition-all duration-300 hover:shadow-purple-500/10">
+            <div className="glass-card rounded-[2rem] p-3 md:p-4 relative z-10 transition-all duration-500">
               
               {!data ? (
                 <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-3">
                   <div className="relative flex-1">
-                    <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                      <Link2 className="h-5 w-5 text-muted-foreground" />
+                    <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none">
+                      <Link2 className="h-5 w-5 text-muted-foreground/60" />
                     </div>
                     <input
                       type="url"
                       placeholder="Paste Instagram URL here..."
                       value={url}
                       onChange={(e) => setUrl(e.target.value)}
-                      className="w-full pl-12 pr-4 py-4 md:py-5 bg-white/50 backdrop-blur-sm border-2 border-transparent focus:border-purple-300 focus:bg-white rounded-2xl outline-none transition-all text-foreground placeholder:text-muted-foreground text-lg"
+                      className="w-full pl-14 pr-6 py-4 md:py-5 bg-white/40 backdrop-blur-md border border-white/40 focus:border-purple-400/50 focus:bg-white/80 rounded-2xl outline-none transition-all text-foreground placeholder:text-muted-foreground/50 text-lg shadow-inner"
                       required
                       data-testid="input-reel-url"
                     />
@@ -62,7 +62,7 @@ export function Hero() {
                   <button
                     type="submit"
                     disabled={isPending || !url}
-                    className="flex items-center justify-center gap-2 px-8 py-4 md:py-5 bg-foreground text-white rounded-2xl font-semibold text-lg hover:bg-foreground/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg"
+                    className="btn-glass flex items-center justify-center gap-2 px-10 py-4 md:py-5 bg-foreground text-background rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-purple-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
                     data-testid="button-submit-url"
                   >
                     {isPending ? (
@@ -80,33 +80,42 @@ export function Hero() {
                 </form>
               ) : (
                 <motion.div 
-                  initial={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-white/80 rounded-2xl p-6 flex flex-col items-center justify-center text-center border border-green-100 shadow-inner"
+                  className="bg-white/40 backdrop-blur-xl rounded-2xl p-8 flex flex-col items-center justify-center text-center border border-white/60 shadow-inner"
                 >
-                  <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
-                    <CheckCircle2 className="w-8 h-8" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-2">Ready to Download</h3>
-                  <p className="text-muted-foreground mb-6">Your video has been processed in the highest available quality.</p>
+                  <motion.div 
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                    className="w-20 h-20 bg-green-500/10 text-green-600 rounded-full flex items-center justify-center mb-6 border border-green-500/20"
+                  >
+                    <CheckCircle2 className="w-10 h-10" />
+                  </motion.div>
+                  <h3 className="text-3xl font-bold text-foreground mb-3">Ready to Download</h3>
+                  <p className="text-muted-foreground font-light mb-8 max-w-md">Your video has been processed in the highest available quality.</p>
                   
                   <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-                    <a 
+                    <motion.a 
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                       href={`/api/proxy?url=${encodeURIComponent(data.videoUrl || "")}`}
                       download="instagram-reel.mp4"
-                      className="px-8 py-3 bg-gradient-primary text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
+                      className="px-10 py-4 bg-gradient-primary text-white rounded-2xl font-bold shadow-xl shadow-orange-500/20 transition-all flex items-center justify-center gap-2"
                       data-testid="link-save-video"
                     >
                       <Download className="w-5 h-5" />
                       Save Video
-                    </a>
-                    <button 
+                    </motion.a>
+                    <motion.button 
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                       onClick={handleReset}
-                      className="px-8 py-3 bg-muted text-foreground rounded-xl font-semibold hover:bg-gray-200 transition-colors"
+                      className="btn-glass px-10 py-4 bg-muted/50 text-foreground rounded-2xl font-bold transition-all"
                       data-testid="button-download-another"
                     >
                       Download Another
-                    </button>
+                    </motion.button>
                   </div>
                 </motion.div>
               )}

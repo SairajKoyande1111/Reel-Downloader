@@ -23,42 +23,50 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-white/80 backdrop-blur-md border-b border-white/20 shadow-sm py-3"
-          : "bg-transparent py-5"
+          ? "bg-white/70 backdrop-blur-lg border-b border-white/20 shadow-lg shadow-black/5 py-3"
+          : "bg-transparent py-6"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center text-white shadow-lg shadow-pink-500/30 group-hover:scale-105 transition-transform duration-300">
-              <DownloadCloud className="w-5 h-5" />
-            </div>
-            <span className="font-display font-bold text-xl tracking-tight text-foreground">
+          <Link href="/" className="flex items-center gap-3 group">
+            <motion.div 
+              whileHover={{ rotate: 5, scale: 1.05 }}
+              className="w-11 h-11 rounded-[14px] bg-gradient-primary flex items-center justify-center text-white shadow-xl shadow-pink-500/20 transition-all duration-300"
+            >
+              <DownloadCloud className="w-6 h-6" />
+            </motion.div>
+            <span className="font-display font-bold text-2xl tracking-tight text-foreground">
               FastVideo<span className="text-gradient">Save</span>
             </span>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className="text-[15px] font-medium text-muted-foreground/80 hover:text-foreground transition-all duration-300 relative group"
               >
                 {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </nav>
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <button className="px-5 py-2.5 rounded-xl font-semibold bg-foreground text-background hover:bg-foreground/90 shadow-md transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0">
+            <motion.button 
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-6 py-2.5 rounded-2xl font-bold bg-foreground text-background hover:shadow-xl hover:shadow-black/10 transition-all duration-300"
+            >
               Install App
-            </button>
+            </motion.button>
           </div>
 
           {/* Mobile Menu Toggle */}
