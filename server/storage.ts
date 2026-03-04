@@ -3,7 +3,7 @@ import {
   downloads,
   type InsertDownload,
   type Download
-} from "@shared/schema";
+} from "@shared/schema.js";
 import { eq } from "drizzle-orm";
 
 export interface IStorage {
