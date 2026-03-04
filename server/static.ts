@@ -4,17 +4,23 @@ import path from "node:path";
 
 export function serveStatic(app: Express) {
   const distPath = path.resolve(process.cwd(), "dist", "public");
-  if (!fs.existsSync(distPath)) {
-    // In Vercel, we might not have the dist path during runtime if not configured correctly,
-    // but for now let's make it more robust.
-    console.warn(`Static directory not found at ${distPath}`);
-    return;
-  }
-
-  app.use(express.static(distPath));
+  
+  // Serve static files from the public directory
+  app.use(express.static(distPath, {
+    index: false
+  }));
 
   // fall through to index.html if the file doesn't exist
-  app.get("*", (_req, res) => {
-    res.sendFile(path.resolve(distPath, "index.html"));
+  app.get("*", (req, res, next) => {
+    if (req.path.startsWith("/api")) {
+      return next();
+    }
+    
+    const indexPath = path.resolve(distPath, "index.html");
+    if (fs.existsSync(indexPath)) {
+      res.sendFile(indexPath);
+    } else {
+      res.status(404).send("Not Found");
+    }
   });
 }
