@@ -7,15 +7,11 @@ import { FAQ } from "@/components/sections/FAQ";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col w-full overflow-x-hidden">
-      <Navbar />
-      <main className="flex-1">
-        <Hero />
-        <HowItWorks />
-        <Features />
-        <FAQ />
-      </main>
-      <Footer />
+    <div className="w-full">
+      <Hero />
+      <HowItWorks />
+      <Features />
+      <FAQ />
     </div>
   );
 }

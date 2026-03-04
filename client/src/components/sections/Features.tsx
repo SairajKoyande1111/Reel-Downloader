@@ -38,7 +38,7 @@ export function Features() {
           >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
               Why choose <br/>
-              <span className="text-gradient">FastVideoSave?</span>
+              <span className="text-gradient">FastVideoSaves?</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-10">
               We've built the most reliable tool to save content from Instagram directly to your device. Here's what makes us different.

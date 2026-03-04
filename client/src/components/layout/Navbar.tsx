@@ -40,7 +40,7 @@ export function Navbar() {
               <DownloadCloud className="w-6 h-6" />
             </motion.div>
             <span className="font-display font-bold text-2xl tracking-tight text-foreground">
-              FastVideo<span className="text-gradient">Save</span>
+              FastVideo<span className="text-gradient">Saves</span>
             </span>
           </Link>
 

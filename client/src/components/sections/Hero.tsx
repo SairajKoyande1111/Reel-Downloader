@@ -41,7 +41,7 @@ export function Hero() {
           </p>
 
           <div className="mt-12 max-w-2xl mx-auto relative">
-            <div className="glass-card rounded-[2rem] p-3 md:p-4 relative z-10 transition-all duration-500">
+            <div className="glass-card rounded-[2rem] p-3 md:p-4 relative z-10 transition-all duration-500 ring-2 ring-transparent hover:ring-purple-500/50 animate-pulse-border">
               
               {!data ? (
                 <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-3">
@@ -54,7 +54,7 @@ export function Hero() {
                       placeholder="Paste Instagram URL here..."
                       value={url}
                       onChange={(e) => setUrl(e.target.value)}
-                      className="w-full pl-14 pr-6 py-4 md:py-5 bg-white/40 backdrop-blur-md border border-white/40 focus:border-purple-400/50 focus:bg-white/80 rounded-2xl outline-none transition-all text-foreground placeholder:text-muted-foreground/50 text-lg shadow-inner"
+                      className="w-full pl-14 pr-6 py-4 md:py-5 bg-white/40 backdrop-blur-md border border-white/40 focus:border-purple-400/50 focus:bg-white/80 rounded-2xl outline-none transition-all text-foreground placeholder:text-muted-foreground/50 text-lg shadow-inner ring-offset-2 focus:ring-2 focus:ring-purple-500/50"
                       required
                       data-testid="input-reel-url"
                     />
@@ -62,7 +62,7 @@ export function Hero() {
                   <button
                     type="submit"
                     disabled={isPending || !url}
-                    className="btn-glass flex items-center justify-center gap-2 px-10 py-4 md:py-5 bg-foreground text-background rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-purple-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                    className="btn-glass flex items-center justify-center gap-2 px-10 py-4 md:py-5 bg-gradient-primary text-white rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-purple-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
                     data-testid="button-submit-url"
                   >
                     {isPending ? (

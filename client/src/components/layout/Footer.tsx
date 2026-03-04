@@ -1,5 +1,8 @@
-import { DownloadCloud, Twitter, Instagram, Github } from "lucide-react";
+import { DownloadCloud } from "lucide-react";
 import { Link } from "wouter";
+import instagramIcon from "@assets/instagram_(1)_1772634012258.png";
+import facebookIcon from "@assets/facebook_(1)_1772634020519.png";
+import twitterIcon from "@assets/twitter_1772634025574.png";
 
 export function Footer() {
   return (
@@ -12,25 +15,30 @@ export function Footer() {
               <div className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center text-white">
                 <DownloadCloud className="w-4 h-4" />
               </div>
-              <span className="font-display font-bold text-lg">FastVideoSave</span>
+              <span className="font-display font-bold text-lg">FastVideoSaves</span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
               The fastest, easiest way to download Instagram Reels, Photos, and IGTV videos in high quality. No login required.
             </p>
-            <div className="flex items-center gap-4 text-muted-foreground">
-              <a href="#" className="hover:text-foreground transition-colors"><Twitter className="w-5 h-5" /></a>
-              <a href="#" className="hover:text-foreground transition-colors"><Instagram className="w-5 h-5" /></a>
-              <a href="#" className="hover:text-foreground transition-colors"><Github className="w-5 h-5" /></a>
+            <div className="flex items-center gap-4">
+              <a href="#" className="hover:opacity-80 transition-opacity">
+                <img src={facebookIcon} alt="Facebook" className="w-6 h-6" />
+              </a>
+              <a href="#" className="hover:opacity-80 transition-opacity">
+                <img src={instagramIcon} alt="Instagram" className="w-6 h-6" />
+              </a>
+              <a href="#" className="hover:opacity-80 transition-opacity">
+                <img src={twitterIcon} alt="Twitter" className="w-6 h-6" />
+              </a>
             </div>
           </div>
 
           <div>
             <h4 className="font-semibold text-foreground mb-4">Product</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Reels Downloader</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Photo Downloader</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Story Downloader</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Chrome Extension</a></li>
+              <li><Link href="/reels" className="hover:text-primary transition-colors">Reels Downloader</Link></li>
+              <li><Link href="/photos" className="hover:text-primary transition-colors">Photo Downloader</Link></li>
+              <li><Link href="/stories" className="hover:text-primary transition-colors">Story Downloader</Link></li>
             </ul>
           </div>
 
@@ -39,26 +47,24 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li><a href="#how-it-works" className="hover:text-primary transition-colors">How to use</a></li>
               <li><a href="#faq" className="hover:text-primary transition-colors">FAQ</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">API API Documentation</a></li>
+              <li><Link href="/contact" className="hover:text-primary transition-colors">Contact Us</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold text-foreground mb-4">Legal</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Cookie Policy</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Contact Us</a></li>
+              <li><Link href="/tos" className="hover:text-primary transition-colors">Terms of Service</Link></li>
+              <li><Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/cookies" className="hover:text-primary transition-colors">Cookie Policy</Link></li>
             </ul>
           </div>
 
         </div>
 
         <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} FastVideoSave. All rights reserved.</p>
-          <p className="mt-2 md:mt-0">Not affiliated with Instagram.</p>
+          <p>© {new Date().getFullYear()} FastVideoSaves. All rights reserved.</p>
+          <p className="mt-2 md:mt-0">Professional Instagram Media Downloader. Not affiliated with Instagram.</p>
         </div>
       </div>
     </footer>
