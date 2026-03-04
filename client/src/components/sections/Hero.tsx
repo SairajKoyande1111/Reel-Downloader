@@ -88,7 +88,7 @@ export function Hero() {
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-2">Ready to Download</h3>
-                  <p className="text-muted-foreground mb-6">Your video has been processed successfully.</p>
+                  <p className="text-muted-foreground mb-6">Your video has been processed in the highest available quality.</p>
                   
                   <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
                     <a 

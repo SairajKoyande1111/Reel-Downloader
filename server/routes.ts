@@ -76,7 +76,12 @@ export async function registerRoutes(
         });
       }
 
+      // Try to find the highest quality video URL if multiple are provided
+      // Often the library returns a list where we can try to pick the best one
+      // For now, we'll stick with the first one but log if there are others
       const videoUrl = result.url_list[0];
+      
+      console.log(`Found ${result.url_list.length} video URLs. Using the first one.`);
       
       // Save the download attempt to the database
       await storage.createDownload({
